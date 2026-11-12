@@ -505,6 +505,8 @@ section{padding:104px 0}
 .gonder .wa-gonder:hover{background:#18723E;border-color:#18723E}
 .gonder svg{width:20px;height:20px}
 @media (max-width:700px){.gonder .btn{flex:1 1 100%}}
+.bal{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.durum a{color:var(--lacivert)}
 </style>
 </head>
 <body>
@@ -796,6 +798,7 @@ section{padding:104px 0}
     </div>
 
     <form id="teklif" novalidate data-reveal style="--i:1">
+      <input type="checkbox" name="botcheck" class="bal" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="iki">
         <label>Adınız<input name="ad" required autocomplete="name"></label>
         <label>Telefon<input name="tel" type="tel" required autocomplete="tel"></label>
@@ -826,7 +829,7 @@ section{padding:104px 0}
         <button class="btn cta wa-gonder" type="submit" value="wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp ile gönder</button>
         <button class="btn bos" type="submit" value="eposta">E-posta ile gönder</button>
       </div>
-      <p class="not">Bilgileriniz hazır bir mesaj olarak WhatsApp'ta açılır, tek dokunuşla bize ulaşır. Fotoğraf eklemek isterseniz aynı sohbetten gönderebilirsiniz.</p>
+      <p class="not"><strong>WhatsApp ile gönder:</strong> bilgileriniz hazır bir mesaj olarak açılır, fotoğraf da ekleyebilirsiniz. <strong>E-posta ile gönder:</strong> talebiniz doğrudan bize iletilir, başka bir uygulama açılmaz.</p>
       <p class="not">Kişisel verileriniz, <a href="kvkk.html">KVKK Aydınlatma Metni</a> kapsamında yalnızca talebinize dönüş yapmak için işlenir.</p>
       <div class="durum" id="durum" role="status"></div>
     </form>
@@ -936,9 +939,25 @@ document.getElementById('teklif').addEventListener('submit', function (e) {
   var govde = 'Merhaba, web sitenizden teklif talebi:\n\n' + satir('Ad', f.ad.value) + satir('Telefon', f.tel.value) +
               satir('Firma', f.firma.value) + satir('Yer', f.yer.value) + satir('Konu', f.konu.value) + '\n' + f.mesaj.value.trim();
   if (yol === 'eposta') {
-    window.location.href = 'mailto:wirbelendustriyel@outlook.com.tr?subject=' +
-      encodeURIComponent('Teklif talebi' + (f.konu.value ? ' – ' + f.konu.value : '')) + '&body=' + encodeURIComponent(govde);
-    d.innerHTML = 'E-posta uygulamanız açılmadıysa <a href="#" class="wa-tekrar">WhatsApp ile gönderin</a> ya da 0544 774 75 85 numarasını arayın.';
+    if (f.botcheck && f.botcheck.checked) return;
+    var btn = f.querySelector('button[value="eposta"]'); btn.disabled = true; var eski = btn.textContent; btn.textContent = 'Gönderiliyor…';
+    d.textContent = 'Talebiniz gönderiliyor…'; d.classList.add('acik');
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ access_key: '6a1cc638-d484-4b18-a246-4c22946bc27f',
+        subject: 'wirbel.com.tr teklif talebi' + (f.konu.value ? ' – ' + f.konu.value : ''),
+        from_name: 'wirbel.com.tr', 'Ad': f.ad.value.trim(), 'Telefon': f.tel.value.trim(), 'Firma': f.firma.value.trim(),
+        'Yer': f.yer.value.trim(), 'Konu': f.konu.value, 'Mesaj': f.mesaj.value.trim(), botcheck: false })
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (j && j.success) {
+        d.innerHTML = '<strong>Talebiniz alındı.</strong> En kısa sürede size dönüş yapacağız. Acil durumlar için: <a href="tel:+905447747585">0544 774 75 85</a>';
+        f.reset();
+      } else { throw new Error((j && j.message) || 'hata'); }
+    }).catch(function () {
+      d.innerHTML = 'Talebiniz şu an gönderilemedi. Lütfen <a href="#" class="wa-tekrar">WhatsApp ile gönderin</a> ya da <a href="tel:+905447747585">0544 774 75 85</a> numarasını arayın.';
+      var t = d.querySelector('.wa-tekrar'); if (t) t.addEventListener('click', function (ev) { ev.preventDefault(); f.querySelector('.wa-gonder').click(); });
+    }).then(function () { btn.disabled = false; btn.textContent = eski; });
+    return;
   } else {
     var url = 'https://wa.me/905447747585?text=' + encodeURIComponent(govde);
     var mobil = window.matchMedia && matchMedia('(pointer:coarse)').matches;
