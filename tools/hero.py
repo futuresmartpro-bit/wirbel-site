@@ -165,7 +165,7 @@ def sahne_trafo():
     b += uyari("⚠ Güç yetersiz!", 1.6, cls="g-popout2", x=150)
     # eski trafo
     b += g("g-out", f'<rect x="400" y="196" width="46" height="56" rx="3" fill="#9FAEA9" stroke="{L}" stroke-width="2"/>'
-                    f'<text x="423" y="228" text-anchor="middle" font-family="Barlow,Arial" font-size="9" fill="{L}">ESKİ</text>'
+                    f'<text x="423" y="221" text-anchor="middle" font-family="Barlow,Arial" font-size="8" font-weight="700" fill="{L}">DÜŞÜK</text><text x="423" y="232" text-anchor="middle" font-family="Barlow,Arial" font-size="8" font-weight="700" fill="{L}">KAPASİTE</text>'
                     f'<path d="M404 200 L442 248 M442 200 L404 248" stroke="{KIRMIZI}" stroke-width="3"{st(2.2)} class="g-in"/>', t=4.0)
     b += teknisyen(480, 252, 3.4)
     b += g("g-drop", f'<rect x="384" y="168" width="78" height="84" rx="4" fill="#9FAEA9" stroke="{L}" stroke-width="2.4"/>'
