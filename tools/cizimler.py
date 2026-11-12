@@ -232,7 +232,7 @@ def sarj():
 ISLER = [
     ("plc", "PLC kontrol panoları", "PLC, güç kaynağı, kontaktör ve klemens düzeniyle makine kumanda panoları.", plc_panosu),
     ("motor", "Motor kontrol panoları", "Motor koruma şalterleri, kontaktörler ve hız kontrol sürücülü çıkışlar.", motor_panosu),
-    ("kapak", "Kumanda kapağı ve operatör ekranı", "Lamba, buton, selektör ve dokunmatik ekranla anlaşılır kullanım.", kapak),
+    ("kapak", "Kumanda kapağı ve operatör ekranı", "İşlevsel tasarım, kolay kontrol edilebilir düzen. Lamba, buton, selektör ve dokunmatik ekran, operatörün bir bakışta anlayacağı şekilde yerleştirilir.", kapak),
     ("kompanzasyon", "Kompanzasyon panoları", "Reaktif güç rölesi, kademe kontaktörleri ve kondansatör grupları.", kompanzasyon),
     ("trafo", "Trafo ve güç artırımı", "Trafo bağlantısı, güç artırımı ve ana dağıtım panosu yenileme.", trafo),
     ("altyapi", "Elektrik altyapısı", "Kablo kanalı, yeraltı kablo döşemesi ve bina dağıtım hatları.", altyapi),
