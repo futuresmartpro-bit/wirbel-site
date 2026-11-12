@@ -526,6 +526,13 @@ section{padding:104px 0}
   .yorum{flex:0 0 84%;scroll-snap-align:center}
   .puan-sayi span:first-child{font-size:52px}
 }
+.vid-blok{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:center;margin-top:56px;padding:40px;background:var(--sac);border:1px solid var(--cizgi);border-left:4px solid var(--sari)}
+.vid-metin h3{font-size:clamp(28px,3vw,38px);color:var(--lacivert);margin-bottom:12px}
+.vid-metin p{color:#36424a;max-width:34em;margin-bottom:12px}
+.vid-not{font-size:14px;color:var(--gri)}
+.vid-metin .btn{margin-top:8px}
+.vid-cerceve video{display:block;width:100%;height:auto;aspect-ratio:9/16;background:var(--pano);border:6px solid var(--lacivert);border-radius:18px}
+@media (max-width:800px){.vid-blok{grid-template-columns:1fr;padding:24px;gap:24px}.vid-cerceve{max-width:340px;margin:0 auto;width:100%}}
 </style>
 </head>
 <body>
@@ -639,6 +646,20 @@ section{padding:104px 0}
           <li>Site ve otoparklar için çoklu şarj<small>Yük yönetimi ve ortak alan planlaması</small></li>
         </ul>
       </article>
+    </div>
+
+    <div class="vid-blok" data-reveal>
+      <div class="vid-metin">
+        <h3>Kompanzasyon nasıl çalışır?</h3>
+        <p>Faturadaki reaktif bedel nereden gelir, kompanzasyon panosu onu nasıl sıfırlar? 30 saniyelik bu çizimli anlatımda örnek bir atölye üzerinden adım adım gösteriyoruz.</p>
+        <p class="vid-not">Tutarlar ve değerler örnektir. Reaktif sınırı sözleşme gücünüze göre değişir.</p>
+        <a class="btn bos" href="#iletisim" data-konu="Kompanzasyon">Kompanzasyon için teklif isteyin</a>
+      </div>
+      <div class="vid-cerceve">
+        <video controls muted playsinline preload="none" poster="video/kompanzasyon-poster.webp" width="360" height="640" aria-label="Kompanzasyon reaktif cezayı nasıl bitirir: çizimli anlatım videosu">
+          <source src="video/kompanzasyon.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
   </div>
 </section>
