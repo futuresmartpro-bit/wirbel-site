@@ -507,6 +507,25 @@ section{padding:104px 0}
 @media (max-width:700px){.gonder .btn{flex:1 1 100%}}
 .bal{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
 .durum a{color:var(--lacivert)}
+.yorumlar{background:#fff;border-top:1px solid var(--cizgi)}
+.puan-sayi{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+.puan-sayi span:first-child{font-family:"Barlow Condensed";font-weight:700;font-size:64px;line-height:1;color:var(--lacivert)}
+.yildiz{color:var(--sari);letter-spacing:2px;font-size:20px}
+.puan-sayi .yildiz{font-size:28px}
+.yorum-izgara{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:0;padding:0}
+.yorum figure{margin:0;height:100%;display:flex;flex-direction:column;gap:12px;background:var(--sac);border:1px solid var(--cizgi);border-left:4px solid var(--sari);padding:22px 22px 18px}
+.yorum blockquote{margin:0;flex:1}
+.yorum blockquote p{font-size:16.5px;color:var(--murekkep)}
+.yorum figcaption{display:flex;flex-direction:column;font-size:14px;color:var(--gri);border-top:1px solid var(--cizgi);padding-top:10px}
+.yorum figcaption strong{color:var(--lacivert);font-size:15.5px}
+.yorum-not{font-size:13px;color:var(--gri);margin-top:20px}
+@media (max-width:900px){.yorum-izgara{grid-template-columns:1fr 1fr}}
+@media (max-width:700px){
+  .yorum-izgara{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:0 -24px;padding:4px 24px 14px;scrollbar-width:none}
+  .yorum-izgara::-webkit-scrollbar{display:none}
+  .yorum{flex:0 0 84%;scroll-snap-align:center}
+  .puan-sayi span:first-child{font-size:52px}
+}
 </style>
 </head>
 <body>
@@ -526,6 +545,7 @@ section{padding:104px 0}
       <a href="#makine">Makine üreticilerine</a>
       <a href="#surec">Nasıl çalışıyoruz</a>
       <a href="#sektorler">Sektörler</a>
+      <a href="#yorumlar">Yorumlar</a>
       <a href="#iletisim">İletişim</a>
     </nav>
     <a class="tel" href="tel:+905447747585">0544 774 75 85</a>
@@ -537,6 +557,7 @@ section{padding:104px 0}
     <a href="#makine">Makine üreticilerine</a>
     <a href="#surec">Nasıl çalışıyoruz</a>
     <a href="#sektorler">Sektörler</a>
+    <a href="#yorumlar">Yorumlar</a>
     <a href="#iletisim">İletişim</a>
     <a class="mm-tel" href="tel:+905447747585">Hemen arayın: 0544 774 75 85</a>
   </nav>
@@ -781,6 +802,30 @@ section{padding:104px 0}
       <p><strong>Makineniz bu listede yok mu?</strong> Daha önce hiç yapılmamış bir makine de olabilir. Nasıl çalışması gerektiğini anlatın, kontrolünü birlikte tasarlayalım.</p>
       <a class="btn cta" href="#iletisim" data-konu="Yeni makine için kontrol sistemi">Makinenizi anlatın</a>
     </div>
+  </div>
+</section>
+
+<section id="yorumlar" class="yorumlar" aria-labelledby="h-yor">
+  <div class="wrap">
+    <div class="bas" data-reveal>
+      <h2 id="h-yor">Müşterilerimiz ne diyor</h2>
+      <div class="puan">
+        <p class="puan-sayi"><span>5,0</span> <span class="yildiz" aria-label="5 üzerinden 5 puan">★★★★★</span></p>
+        <p>Armut.com üzerinden yaptığımız işlerde 36 müşterimiz değerlendirme yaptı, hizmet puanımız 5 üzerinden 5. Armut bizi 2026 yılında <strong>Tavsiye Edilen Hizmet Veren</strong> olarak belgeledi.</p>
+      </div>
+    </div>
+    <ul class="yorum-izgara" data-reveal>
+        <li class="yorum"><figure><span class="yildiz" aria-label="5 üzerinden 5 puan">★★★★★</span><blockquote><p>Muhammed Bey alanında çok tecrübeli. Tesisimizdeki 2 arıza için çağırdık. Bütün işlerimizi sorunsuz bir şekilde yaptı.</p></blockquote><figcaption><strong>K.</strong><span>Endüstriyel otomasyon, Ekim 2022</span></figcaption></figure></li>
+        <li class="yorum"><figure><span class="yildiz" aria-label="5 üzerinden 5 puan">★★★★★</span><blockquote><p>Araç şarj istasyonu altyapı kurulumu yaptırdım. Konusunda uzman, hızlı, makul fiyat ve temiz işçilik için teşekkür ederim.</p></blockquote><figcaption><strong>Serdar A.</strong><span>Güç artırım projesi, Haziran 2024</span></figcaption></figure></li>
+        <li class="yorum"><figure><span class="yildiz" aria-label="5 üzerinden 5 puan">★★★★★</span><blockquote><p>Çok kısa sürede proje işimi tamamlayıp ilgili kurumdan onay aldılar. Profesyonel bir ekip, tavsiye ederim.</p></blockquote><figcaption><strong>Okay G.</strong><span>Elektrik proje çizimi, Eylül 2022</span></figcaption></figure></li>
+        <li class="yorum"><figure><span class="yildiz" aria-label="5 üzerinden 5 puan">★★★★★</span><blockquote><p>Muhammet ustanın ellerine sağlık. Çok güzel iş çıkardı. Bugünlerde Muhammet usta gibi işinin ehli bir kişiyi bulmak kolay değil.</p></blockquote><figcaption><strong>Mustafa K.</strong><span>Araç şarj istasyonu kurulumu, Kasım 2024</span></figcaption></figure></li>
+        <li class="yorum"><figure><span class="yildiz" aria-label="5 üzerinden 5 puan">★★★★★</span><blockquote><p>Bizim işimize bizden daha çok önem verdi, söz verdiği zamanda başladı ve sonlandırdı. Özverili ve güvenilir bir işbirliği oldu.</p></blockquote><figcaption><strong>Cevdet Selçuk S.</strong><span>Elektrik proje çizimi, Ocak 2023</span></figcaption></figure></li>
+        <li class="yorum"><figure><span class="yildiz" aria-label="5 üzerinden 5 puan">★★★★★</span><blockquote><p>Muhammet Bey hem hızla işimizi çözdü hem de çok içimize sinen bir şekilde tamamladı. Büyük bir memnuniyetle tavsiye ederim.</p></blockquote><figcaption><strong>Gözde C.</strong><span>Elektrik hattı çekme, Ekim 2023</span></figcaption></figure></li>
+        <li class="yorum"><figure><span class="yildiz" aria-label="5 üzerinden 5 puan">★★★★★</span><blockquote><p>Çok teşekkür ederiz. Randevu saatine sadık, işinin ehli, gönül rahatlığı ile herkese tavsiye edilecek bir kişi.</p></blockquote><figcaption><strong>Nurgül E.</strong><span>Elektrik montaj, Eylül 2023</span></figcaption></figure></li>
+        <li class="yorum"><figure><span class="yildiz" aria-label="5 üzerinden 5 puan">★★★★★</span><blockquote><p>Bilgili, çok iyi. Sorunu anlayıp halletti, gerekli tavsiyelerde bulundu.</p></blockquote><figcaption><strong>Hakan G.</strong><span>Elektrik tamiri, Şubat 2025</span></figcaption></figure></li>
+        <li class="yorum"><figure><span class="yildiz" aria-label="5 üzerinden 5 puan">★★★★★</span><blockquote><p>Hiç arkanıza bakmadan bütün işlerinizi verebilirsiniz. Yaptığı işçilik ve esnaflığı 10 numara, kendisine teşekkür ederim.</p></blockquote><figcaption><strong>Yavuz H.</strong><span>Araç şarj istasyonu, Temmuz 2024</span></figcaption></figure></li>
+    </ul>
+    <p class="yorum-not">Yorumlar Armut.com'daki müşteri değerlendirmelerinden alınmıştır; uzun yorumların ilk cümleleri verilmiş, yalnızca yazım düzeltilmiştir. Müşterilerimiz, Armut'ta göründüğü gibi ad ve soyadının baş harfiyle yer alır.</p>
   </div>
 </section>
 
